@@ -26,16 +26,16 @@ namespace PL
             if (result.Correct)
             {
                 Console.WriteLine("Se inserto el alumno");
-                Console.ReadKey();
+                
             }
             else
             {
                 Console.WriteLine("No se inserto el alumno");
-                Console.ReadKey();
+                
 
             }
 
-
+            Console.ReadKey();
         }
 
     }
