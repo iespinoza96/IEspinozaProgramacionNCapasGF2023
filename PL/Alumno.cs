@@ -38,5 +38,27 @@ namespace PL
             Console.ReadKey();
         }
 
+        public static void GetAll()
+        {
+            ML.Result result = BL.Alumno.GetAll();
+
+            if (result.Correct)
+            {
+                //unboxing
+                foreach (ML.Alumno alumno in result.Objects) 
+                {
+                    Console.WriteLine("IdAlumno: " + alumno.IdAlumno);
+                    Console.WriteLine("Nombre: " + alumno.Nombre);
+                    Console.WriteLine("Apellido Paterno: " + alumno.ApellidoPaterno);
+                    Console.WriteLine("Apellido Materno: " + alumno.ApellidoMaterno);
+                    Console.WriteLine("----------------------------------------------");
+                    
+                }
+
+            }
+
+            Console.ReadKey();
+        }
+
     }
 }

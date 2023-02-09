@@ -80,5 +80,61 @@ namespace BL
         {
 
         }
+
+        public static ML.Result GetAll()
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+
+                using (SqlConnection context = new SqlConnection(DL.Conexion.GetConnectionString()))//conexion
+                {
+                    string query = "AlumnoGetAll";
+
+                    using(SqlCommand cmd = new SqlCommand()) 
+                    {
+                        cmd.CommandText = query;
+                        cmd.Connection = context;
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        DataTable alumnoDataTable = new DataTable();
+
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+
+                        sqlDataAdapter.Fill(alumnoDataTable);
+
+                        if (alumnoDataTable.Rows.Count > 0)
+                        {
+                            result.Objects = new List<object>();
+
+                            foreach (DataRow row in alumnoDataTable.Rows)
+                            {
+                                ML.Alumno alumno = new ML.Alumno();
+
+                                alumno.IdAlumno = (int)row[0];
+                                alumno.Nombre = (string)row[1];
+                                alumno.ApellidoPaterno = row[2].ToString();
+                                alumno.ApellidoMaterno = row[3].ToString();
+
+                                result.Objects.Add(alumno); //boxing
+
+                            }
+                        }
+
+                        result.Correct = true;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
+            return result;
+        }
+
+
     }
 }
