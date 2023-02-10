@@ -22,7 +22,8 @@ namespace PL
 
 
             //ML.Result result = BL.Alumno.Add(alumno); //Query
-            ML.Result result = BL.Alumno.AddSP(alumno); //SP
+            //ML.Result result = BL.Alumno.AddSP(alumno); //SP
+            ML.Result result = BL.Alumno.AddEF(alumno); //EF
 
             if (result.Correct)
             {

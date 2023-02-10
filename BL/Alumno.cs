@@ -258,6 +258,40 @@ namespace BL
 
         }
 
+        //EF
+
+        public static ML.Result AddEF(ML.Alumno alumno)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
+                {
+                    int query = context.AlumnoAdd(alumno.Nombre,alumno.ApellidoPaterno,alumno.ApellidoMaterno);
+
+                    if (query >= 1)
+                    {
+                        result.Correct = true;
+                    }
+                    else
+                    {
+                        result.Correct = false;
+                        result.ErrorMessage = "No se insertó el registro";
+                    }
+
+                    result.Correct = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
+
 
 
 
