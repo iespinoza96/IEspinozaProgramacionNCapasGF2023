@@ -42,7 +42,8 @@ namespace PL
 
         public static void GetAll()
         {
-            ML.Result result = BL.Alumno.GetAll();
+            //ML.Result result = BL.Alumno.GetAll();
+            ML.Result result = BL.Alumno.GetAllEF();
 
             if (result.Correct)
             {
@@ -53,6 +54,9 @@ namespace PL
                     Console.WriteLine("Nombre: " + alumno.Nombre);
                     Console.WriteLine("Apellido Paterno: " + alumno.ApellidoPaterno);
                     Console.WriteLine("Apellido Materno: " + alumno.ApellidoMaterno);
+                    Console.WriteLine("IdSemestre: " + alumno.Semestre.IdSemestre);
+                    Console.WriteLine("Semestre: " + alumno.Semestre.Nombre);
+
                     Console.WriteLine("----------------------------------------------");
 
                 }

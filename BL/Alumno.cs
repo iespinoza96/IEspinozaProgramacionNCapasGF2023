@@ -315,6 +315,10 @@ namespace BL
                             alumno.ApellidoPaterno = obj.ApellidoPaterno;
                             alumno.ApellidoMaterno = obj.ApellidoMaterno;
 
+                            alumno.Semestre = new ML.Semestre();
+                            alumno.Semestre.IdSemestre = obj.IdSemestre.Value;
+                            alumno.Semestre.Nombre = obj.SemestreNombre;
+
                             result.Objects.Add(alumno);
                         }
                     }
