@@ -292,6 +292,85 @@ namespace BL
             return result;
         }
 
+        public static ML.Result GetAllEF()
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using(DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
+                {
+                    var query = context.AlumnoGetAll().ToList();
+
+                    if(query != null)
+                    {
+                        result.Objects = new List<object>();
+
+                        foreach (var obj in query)
+                        {
+                            ML.Alumno alumno = new ML.Alumno();
+
+                            alumno.IdAlumno = obj.IdAlumno;
+                            alumno.Nombre = obj.Nombre;
+                            alumno.ApellidoPaterno = obj.ApellidoPaterno;
+                            alumno.ApellidoMaterno = obj.ApellidoMaterno;
+
+                            result.Objects.Add(alumno);
+                        }
+                    }
+                }
+
+
+
+                        result.Correct = true;
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            return result;
+        }
+        public static ML.Result GetByIdEF(int IdAlumno)
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+
+                using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())//conexion
+                {
+                    var query = context.AlumnoGetById(IdAlumno).FirstOrDefault();
+
+                        if (query != null)
+                        {
+
+                            ML.Alumno alumno = new ML.Alumno();
+
+                            alumno.IdAlumno = query.IdAlumno;
+                            alumno.Nombre = query.Nombre;
+                            alumno.ApellidoPaterno = query.ApellidoPaterno;
+                            alumno.ApellidoMaterno = query.ApellidoMaterno;
+
+                            result.Object = alumno; //boxing
+
+                        }
+
+                        result.Correct = true;
+                    
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            return result;
+        }
+
 
 
 
