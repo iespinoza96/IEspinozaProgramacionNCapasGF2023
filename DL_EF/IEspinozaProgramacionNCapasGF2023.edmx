@@ -38,6 +38,7 @@
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
           <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="IdSemestre" Type="tinyint" Mode="In" />
         </Function>
         <Function Name="AlumnoGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="AlumnoGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -68,11 +69,6 @@
         </EntityType>
         <EntityContainer Name="IEspinozaProgramacionNCapasGF2023Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Alumnoes" EntityType="Self.Alumno" />
-          <FunctionImport Name="AlumnoAdd">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
-            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="AlumnoGetById" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.AlumnoGetById_Result)">
           <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -82,6 +78,12 @@
             <End Role="Alumno" EntitySet="Alumnoes" />
           </AssociationSet>
           <FunctionImport Name="AlumnoGetAll" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.AlumnoGetAll_Result)" />
+          <FunctionImport Name="AlumnoAdd">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="IdSemestre" Mode="In" Type="Byte" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AlumnoGetById_Result">
           <Property Type="Int32" Name="IdAlumno" Nullable="false" />
@@ -134,7 +136,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="AlumnoAdd" FunctionName="IEspinozaProgramacionNCapasGF2023Model.Store.AlumnoAdd" />
           <FunctionImportMapping FunctionImportName="AlumnoGetById" FunctionName="IEspinozaProgramacionNCapasGF2023Model.Store.AlumnoGetById">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IEspinozaProgramacionNCapasGF2023Model.AlumnoGetById_Result">
@@ -165,6 +166,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AlumnoAdd" FunctionName="IEspinozaProgramacionNCapasGF2023Model.Store.AlumnoAdd" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

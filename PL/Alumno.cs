@@ -20,10 +20,16 @@ namespace PL
             Console.WriteLine("Inserte el Apellido Materno del alumno: ");
             alumno.ApellidoMaterno = Console.ReadLine();
 
+            Console.WriteLine("Inserte el Id del Semestre: ");
+            alumno.Semestre = new ML.Semestre();
+            alumno.Semestre.IdSemestre = byte.Parse(Console.ReadLine());
+
+
 
             //ML.Result result = BL.Alumno.Add(alumno); //Query
             //ML.Result result = BL.Alumno.AddSP(alumno); //SP
-            ML.Result result = BL.Alumno.AddEF(alumno); //EF
+            //ML.Result result = BL.Alumno.AddEF(alumno); //EF
+            ML.Result result = BL.Alumno.AddLINQ(alumno); //LINQ
 
             if (result.Correct)
             {
@@ -42,8 +48,9 @@ namespace PL
 
         public static void GetAll()
         {
-            //ML.Result result = BL.Alumno.GetAll();
-            ML.Result result = BL.Alumno.GetAllEF();
+            //ML.Result result = BL.Alumno.GetAll(); //SP
+            //ML.Result result = BL.Alumno.GetAllEF(); //EF
+            ML.Result result = BL.Alumno.GetAllLINQ(); //LINQ
 
             if (result.Correct)
             {

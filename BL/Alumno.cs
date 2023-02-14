@@ -268,7 +268,7 @@ namespace BL
             {
                 using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
                 {
-                    int query = context.AlumnoAdd(alumno.Nombre,alumno.ApellidoPaterno,alumno.ApellidoMaterno);
+                    int query = context.AlumnoAdd(alumno.Nombre,alumno.ApellidoPaterno,alumno.ApellidoMaterno,alumno.Semestre.IdSemestre);
 
                     if (query >= 1)
                     {
@@ -376,7 +376,97 @@ namespace BL
         }
 
 
+        //LINQ
 
+        public static ML.Result GetAllLINQ()
+        {
+            ML.Result result = new ML.Result();
+
+            try
+            {
+                using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
+                {
+                    var query = (from alumnoLINQ in context.Alumnoes
+                                 join semestreLINQ in context.Semestres on alumnoLINQ.IdSemestre equals semestreLINQ.IdSemestre
+                                 select new { 
+                                     IdAlumno = alumnoLINQ.IdAlumno,
+                                     Nombre = alumnoLINQ.Nombre, 
+                                     ApellidoPaterno = alumnoLINQ.ApellidoPaterno,
+                                     ApellidoMaterno = alumnoLINQ.ApellidoMaterno,
+                                     IdSemestre = alumnoLINQ.IdSemestre,
+                                     Semestre = alumnoLINQ.Semestre.Nombre
+                                 });
+
+                    result.Objects = new List<object>();
+
+                    if (query != null && query.ToList().Count > 0)
+                    {
+                        foreach (var obj in query)
+                        {
+                            ML.Alumno alumno = new ML.Alumno();
+                            alumno.IdAlumno = obj.IdAlumno;
+                            alumno.Nombre = obj.Nombre;
+                            alumno.ApellidoPaterno = obj.ApellidoPaterno;
+                            alumno.ApellidoMaterno = obj.ApellidoMaterno;
+
+                            alumno.Semestre = new ML.Semestre();
+                            alumno.Semestre.IdSemestre = obj.IdSemestre.Value;
+                            alumno.Semestre.Nombre = obj.Semestre;
+
+                            result.Objects.Add(alumno);
+                        }
+                        result.Correct = true;
+                    }
+                    else
+                    {
+                        result.Correct = false;
+                        result.ErrorMessage = "No se encontraron registros";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+            }
+            return result;
+        }
+
+        public static ML.Result AddLINQ(ML.Alumno alumno)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
+                {
+                    DL_EF.Alumno alumnoDL = new DL_EF.Alumno();
+
+                    alumnoDL.Nombre = alumno.Nombre;
+                    alumnoDL.ApellidoPaterno = alumno.ApellidoPaterno;
+                    alumnoDL.ApellidoMaterno = alumno.ApellidoMaterno;
+
+                    //alumnoDL.Semestre = new DL_EF.Semestre();
+                    alumnoDL.IdSemestre = alumno.Semestre.IdSemestre;
+
+                    context.Alumnoes.Add(alumnoDL);
+                    context.SaveChanges();
+                }
+
+                result.Correct = true;
+            }
+
+            catch (Exception ex)
+            {
+              
+
+                result.Correct = false;
+                result.ErrorMessage = ex.Message;
+            }
+
+            return result;
+        }
+
+      
 
 
     }
