@@ -20,6 +20,9 @@ namespace PL
             Console.WriteLine("Inserte el Apellido Materno del alumno: ");
             alumno.ApellidoMaterno = Console.ReadLine();
 
+            Console.WriteLine("Inserte la fecha de nacimiento (dd/MM/yyyy): ");
+            alumno.FechaNacimiento = Console.ReadLine();
+
             Console.WriteLine("Inserte el Id del Semestre: ");
             alumno.Semestre = new ML.Semestre();
             alumno.Semestre.IdSemestre = byte.Parse(Console.ReadLine());

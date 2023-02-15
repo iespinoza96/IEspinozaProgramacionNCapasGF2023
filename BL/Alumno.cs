@@ -314,6 +314,8 @@ namespace BL
                             alumno.Nombre = obj.Nombre;
                             alumno.ApellidoPaterno = obj.ApellidoPaterno;
                             alumno.ApellidoMaterno = obj.ApellidoMaterno;
+                            //alumno.FechaNacimiento = obj.FechaNacimiento.ToString("dd/MM/yyyy");
+
 
                             alumno.Semestre = new ML.Semestre();
                             alumno.Semestre.IdSemestre = obj.IdSemestre.Value;
@@ -444,6 +446,7 @@ namespace BL
                     alumnoDL.Nombre = alumno.Nombre;
                     alumnoDL.ApellidoPaterno = alumno.ApellidoPaterno;
                     alumnoDL.ApellidoMaterno = alumno.ApellidoMaterno;
+                    
 
                     //alumnoDL.Semestre = new DL_EF.Semestre();
                     alumnoDL.IdSemestre = alumno.Semestre.IdSemestre;
