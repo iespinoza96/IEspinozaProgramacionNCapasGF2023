@@ -8,5 +8,10 @@ namespace PL
 {
     internal class Semestre
     {
+        //add
+        //update
+        ////delete
+        //getall
+        //getbyId
     }
 }

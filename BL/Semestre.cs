@@ -8,5 +8,19 @@ namespace BL
 {
     internal class Semestre
     {
+        //EF
+        //add
+        //update
+        ////delete
+        //getall
+        //getbyId
+
+        //LINQ 
+
+        //add
+        //update
+        ////delete
+        //getall
+        //getbyId
     }
 }
