@@ -9,6 +9,7 @@ namespace PL_MVC.Controllers
     public class AlumnoController : Controller
     {
         // GET: Alumno
+        [HttpGet] 
         public ActionResult GetAll()
         {
             ML.Result result = BL.Alumno.GetAllEF(); //EF
@@ -24,5 +25,55 @@ namespace PL_MVC.Controllers
             }
             
         }
+
+        [HttpGet]
+        public ActionResult Form(int? IdAlumno) 
+        {
+            if (IdAlumno == null)
+            {
+                //add //formulario vacio
+                return View();
+            }
+            else
+            {
+                //getById
+                //update
+                return View();
+            }
+
+            
+        }
+
+        [HttpPost]
+        public ActionResult Form(ML.Alumno alumno)
+        {
+            ML.Result result = new ML.Result();
+            if (alumno.IdAlumno == 0)
+            {
+                //add 
+                result = BL.Alumno.AddEF(alumno);
+
+                if (result.Correct)
+                {
+                    ViewBag.Message = "Se completo el registro satisfactoriamente";
+                }
+                else
+                {
+                    ViewBag.Message = "Ocurrio un error al insertar el registro";
+                }
+                
+                return View();
+            }
+            else
+            {
+                //getById
+                //update
+                return View();
+            }
+
+
+        }
+
+
     }
 }

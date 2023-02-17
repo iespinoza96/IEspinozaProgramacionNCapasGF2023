@@ -10,10 +10,10 @@
     <hr />
     <div class="row">
         <div style="float:right">
-            @Html.ActionLink("Agrega Alumno", "Add", "Alumno", htmlAttributes: new { @class = "btn btn-success" })
+            @Html.ActionLink("+", "Form", "Alumno", htmlAttributes: new { @class = "btn btn-success" })
         </div>
     </div>
-
+    <hr />
     <div class="row">
         @if (Model.Alumnos != null)
         {
@@ -25,8 +25,8 @@
 
                         <td class="hidden">IdAlumno</td>
                         <td class="text-center" style=" font-weight:bold;">Nombre</td>
-                        <td class="text-center" style=" font-weight:bold;">Apellido Paterno</td>
-                        <td class="text-center" style=" font-weight:bold;">Apellido Materno</td>
+                        @*<td class="text-center" style=" font-weight:bold;">Apellido Paterno</td>
+                            <td class="text-center" style=" font-weight:bold;">Apellido Materno</td>*@
                         <td class="text-center" style=" font-weight:bold;">Fecha Nacimiento</td>
                         <td class="text-center" style=" font-weight:bold;">Semestre</td>
 
@@ -41,9 +41,9 @@
                             <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Alumno", new { IdAlumno = alumno.IdAlumno })"></a></td>
 
                             <td class="hidden">@alumno.IdAlumno</td>
-                            <td>@alumno.Nombre</td>
-                            <td>@alumno.ApellidoPaterno</td>
-                            <td>@alumno.ApellidoMaterno</td>
+                            <td>@alumno.Nombre @alumno.ApellidoPaterno @alumno.ApellidoMaterno</td>
+                            @*<td>@alumno.ApellidoPaterno</td>
+                                <td>@alumno.ApellidoMaterno</td>*@
                             <td>@alumno.FechaNacimiento</td>
                             <td class="hidden">@alumno.Semestre.IdSemestre</td>
                             <td>@alumno.Semestre.Nombre</td>
