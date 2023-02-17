@@ -27,9 +27,9 @@ namespace PL_MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Form(int? IdAlumno) 
+        public ActionResult Form(int? idAlumno) //2
         {
-            if (IdAlumno == null)
+            if (idAlumno == null)
             {
                 //add //formulario vacio
                 return View();
@@ -37,8 +37,21 @@ namespace PL_MVC.Controllers
             else
             {
                 //getById
-                //update
-                return View();
+                ML.Result result = BL.Alumno.GetById(idAlumno.Value); //2
+
+                if (result.Correct)
+                {
+                    ML.Alumno alumno = (ML.Alumno)result.Object;//unboxing
+                    //update
+                    return View(alumno);
+                }
+                else
+                {
+                    ViewBag.Message = "Ocurrio al consultar la información del alumno";
+                    return View("Modal");
+                }
+                
+                
             }
 
             
@@ -48,6 +61,7 @@ namespace PL_MVC.Controllers
         public ActionResult Form(ML.Alumno alumno)
         {
             ML.Result result = new ML.Result();
+
             if (alumno.IdAlumno == 0)
             {
                 //add 
@@ -62,16 +76,33 @@ namespace PL_MVC.Controllers
                     ViewBag.Message = "Ocurrio un error al insertar el registro";
                 }
                 
-                return View();
+                return View("Modal");
             }
             else
             {
-                //getById
+
                 //update
-                return View();
+                //result = BL.Alumno.Add(alumno);
+
+                //if (result.Correct)
+                //{
+                //    ViewBag.Message = "Se actualizo la información satisfactoriamente";
+                //}
+                //else
+                //{
+                //    ViewBag.Message = "Ocurrio un error al actualizar el registro";
+                //}
+                return View("Modal");
             }
 
 
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int idAlumno)
+        {
+            //ML.Result result = BL.Alumno.Delete(idAlumno);
+            return View();
         }
 
 

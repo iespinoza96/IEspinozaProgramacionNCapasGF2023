@@ -172,6 +172,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Alumno\GetAll.cshtml" />
     <Content Include="Views\Alumno\Form.cshtml" />
+    <Content Include="Views\Alumno\Modal.cshtml" />
+    <Content Include="Views\Alumno\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
