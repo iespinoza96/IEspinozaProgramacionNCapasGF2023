@@ -29,10 +29,19 @@ namespace PL_MVC.Controllers
         [HttpGet]
         public ActionResult Form(int? idAlumno) //2
         {
+            ML.Result resultSemestre = BL.Semestre.GetAll();
+
+            ML.Alumno alumno = new ML.Alumno();
+            alumno.Semestre = new ML.Semestre();
+
+            if (resultSemestre.Correct)
+            {
+                alumno.Semestre.Semestres = resultSemestre.Objects;
+            }
             if (idAlumno == null)
             {
                 //add //formulario vacio
-                return View();
+                return View(alumno);
             }
             else
             {
@@ -41,7 +50,7 @@ namespace PL_MVC.Controllers
 
                 if (result.Correct)
                 {
-                    ML.Alumno alumno = (ML.Alumno)result.Object;//unboxing
+                     alumno = (ML.Alumno)result.Object;//unboxing
                     //update
                     return View(alumno);
                 }
