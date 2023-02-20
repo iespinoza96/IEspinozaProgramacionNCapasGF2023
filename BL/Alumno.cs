@@ -180,6 +180,9 @@ namespace BL
                             alumno.Nombre = (string)row[1];
                             alumno.ApellidoPaterno = row[2].ToString();
                             alumno.ApellidoMaterno = row[3].ToString();
+                            alumno.Semestre = new ML.Semestre();
+                            alumno.Semestre.IdSemestre = byte.Parse(row[4].ToString());
+                            alumno.NombreCompleto = alumno.Nombre + alumno.ApellidoMaterno + alumno.ApellidoPaterno;
 
                             result.Object = alumno; //boxing
 

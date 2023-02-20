@@ -49,7 +49,7 @@
                             <td>@alumno.Semestre.Nombre</td>
 
 
-                            <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Alumno", new { IdAlumno = alumno.IdAlumno })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                            <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-erase" href="@Url.Action("Delete", "Alumno", new { IdAlumno = alumno.IdAlumno })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
                         </tr>
                     }
                 </tbody>
