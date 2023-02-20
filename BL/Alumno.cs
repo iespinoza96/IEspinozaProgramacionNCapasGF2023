@@ -72,7 +72,7 @@ namespace BL
 
             return result;
 
-        } 
+        }
         public void Update()
         {
 
@@ -132,7 +132,9 @@ namespace BL
             }
             catch (Exception ex)
             {
-
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+                result.Correct = false;
 
             }
             return result;
@@ -190,7 +192,9 @@ namespace BL
             }
             catch (Exception ex)
             {
-
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+                result.Correct = false;
 
             }
             return result;
@@ -268,7 +272,7 @@ namespace BL
             {
                 using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
                 {
-                    int query = context.AlumnoAdd(alumno.Nombre,alumno.ApellidoPaterno,alumno.ApellidoMaterno,alumno.Semestre.IdSemestre);
+                    int query = context.AlumnoAdd(alumno.Nombre, alumno.ApellidoPaterno, alumno.ApellidoMaterno, alumno.Semestre.IdSemestre);
 
                     if (query >= 1)
                     {
@@ -298,11 +302,11 @@ namespace BL
 
             try
             {
-                using(DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
+                using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
                 {
                     var query = context.AlumnoGetAll().ToList();
 
-                    if(query != null)
+                    if (query != null)
                     {
                         result.Objects = new List<object>();
 
@@ -314,7 +318,7 @@ namespace BL
                             alumno.Nombre = obj.Nombre;
                             alumno.ApellidoPaterno = obj.ApellidoPaterno;
                             alumno.ApellidoMaterno = obj.ApellidoMaterno;
-                            //alumno.FechaNacimiento = obj.FechaNacimiento.ToString("dd/MM/yyyy");
+                            alumno.FechaNacimiento = obj.FechaNacimiento.Value.ToString("dd/MM/yyyy");
 
 
                             alumno.Semestre = new ML.Semestre();
@@ -328,13 +332,15 @@ namespace BL
 
 
 
-                        result.Correct = true;
+                result.Correct = true;
 
 
             }
             catch (Exception ex)
             {
-
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+                result.Correct = false;
 
             }
             return result;
@@ -350,28 +356,38 @@ namespace BL
                 {
                     var query = context.AlumnoGetById(IdAlumno).FirstOrDefault();
 
-                        if (query != null)
-                        {
+                    if (query != null)
+                    {
 
-                            ML.Alumno alumno = new ML.Alumno();
+                        ML.Alumno alumno = new ML.Alumno();
 
-                            alumno.IdAlumno = query.IdAlumno;
-                            alumno.Nombre = query.Nombre;
-                            alumno.ApellidoPaterno = query.ApellidoPaterno;
-                            alumno.ApellidoMaterno = query.ApellidoMaterno;
+                        alumno.IdAlumno = query.IdAlumno;
+                        alumno.Nombre = query.Nombre;
+                        alumno.ApellidoPaterno = query.ApellidoPaterno;
+                        alumno.ApellidoMaterno = query.ApellidoMaterno;
 
-                            result.Object = alumno; //boxing
+                        alumno.FechaNacimiento = query.FechaNacimiento.Value.ToString("dd/MM/yyyy");
 
-                        }
 
-                        result.Correct = true;
-                    
+                        alumno.Semestre = new ML.Semestre();
+                        alumno.Semestre.IdSemestre = query.IdSemestre.Value;
+                        
+
+
+                        result.Object = alumno; //boxing
+
+                    }
+
+                    result.Correct = true;
+
                 }
 
             }
             catch (Exception ex)
             {
-
+                result.ErrorMessage = ex.Message;
+                result.Ex = ex;
+                result.Correct = false;
 
             }
             return result;
@@ -390,9 +406,10 @@ namespace BL
                 {
                     var query = (from alumnoLINQ in context.Alumnoes
                                  join semestreLINQ in context.Semestres on alumnoLINQ.IdSemestre equals semestreLINQ.IdSemestre
-                                 select new { 
+                                 select new
+                                 {
                                      IdAlumno = alumnoLINQ.IdAlumno,
-                                     Nombre = alumnoLINQ.Nombre, 
+                                     Nombre = alumnoLINQ.Nombre,
                                      ApellidoPaterno = alumnoLINQ.ApellidoPaterno,
                                      ApellidoMaterno = alumnoLINQ.ApellidoMaterno,
                                      IdSemestre = alumnoLINQ.IdSemestre,
@@ -446,7 +463,7 @@ namespace BL
                     alumnoDL.Nombre = alumno.Nombre;
                     alumnoDL.ApellidoPaterno = alumno.ApellidoPaterno;
                     alumnoDL.ApellidoMaterno = alumno.ApellidoMaterno;
-                    
+
 
                     //alumnoDL.Semestre = new DL_EF.Semestre();
                     alumnoDL.IdSemestre = alumno.Semestre.IdSemestre;
@@ -460,7 +477,7 @@ namespace BL
 
             catch (Exception ex)
             {
-              
+
 
                 result.Correct = false;
                 result.ErrorMessage = ex.Message;
@@ -469,7 +486,7 @@ namespace BL
             return result;
         }
 
-      
+
 
 
     }

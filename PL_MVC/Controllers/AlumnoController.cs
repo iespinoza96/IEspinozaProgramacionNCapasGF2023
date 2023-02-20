@@ -51,6 +51,7 @@ namespace PL_MVC.Controllers
                 if (result.Correct)
                 {
                      alumno = (ML.Alumno)result.Object;//unboxing
+                    alumno.Semestre.Semestres = resultSemestre.Objects;
                     //update
                     return View(alumno);
                 }
