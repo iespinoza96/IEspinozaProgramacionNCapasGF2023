@@ -11,12 +11,10 @@ namespace DL_EF
 {
     using System;
     
-    public partial class AlumnoGetById_Result
+    public partial class GrupoGetByIdPlantel_Result
     {
-        public int IdAlumno { get; set; }
+        public int IdGrupo { get; set; }
         public string Nombre { get; set; }
-        public string ApellidoPaterno { get; set; }
-        public string ApellidoMaterno { get; set; }
-        public Nullable<byte> IdSemestre { get; set; }
+        public Nullable<int> IdPlantel { get; set; }
     }
 }

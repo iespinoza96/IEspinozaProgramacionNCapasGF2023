@@ -10,13 +10,14 @@
 namespace DL_EF
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class AlumnoGetById_Result
+    public partial class Horario
     {
-        public int IdAlumno { get; set; }
-        public string Nombre { get; set; }
-        public string ApellidoPaterno { get; set; }
-        public string ApellidoMaterno { get; set; }
-        public Nullable<byte> IdSemestre { get; set; }
+        public int IdHorario { get; set; }
+        public string turno { get; set; }
+        public Nullable<int> IdAlumno { get; set; }
+    
+        public virtual Alumno Alumno { get; set; }
     }
 }

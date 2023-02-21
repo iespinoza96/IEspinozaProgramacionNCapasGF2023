@@ -28,6 +28,9 @@ namespace DL_EF
         }
     
         public virtual DbSet<Alumno> Alumnoes { get; set; }
+        public virtual DbSet<Grupo> Grupoes { get; set; }
+        public virtual DbSet<Horario> Horarios { get; set; }
+        public virtual DbSet<Plantel> Plantels { get; set; }
         public virtual DbSet<Semestre> Semestres { get; set; }
     
         public virtual int AlumnoAdd(string nombre, string apellidoPaterno, string apellidoMaterno, Nullable<byte> idSemestre)
@@ -51,11 +54,6 @@ namespace DL_EF
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AlumnoAdd", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, idSemestreParameter);
         }
     
-        public virtual ObjectResult<SemestreGetAll_Result> SemestreGetAll()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SemestreGetAll_Result>("SemestreGetAll");
-        }
-    
         public virtual ObjectResult<AlumnoGetAll_Result> AlumnoGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AlumnoGetAll_Result>("AlumnoGetAll");
@@ -68,6 +66,25 @@ namespace DL_EF
                 new ObjectParameter("IdAlumno", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AlumnoGetById_Result>("AlumnoGetById", idAlumnoParameter);
+        }
+    
+        public virtual ObjectResult<GetAllPlantel_Result> GetAllPlantel()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllPlantel_Result>("GetAllPlantel");
+        }
+    
+        public virtual ObjectResult<GrupoGetByIdPlantel_Result> GrupoGetByIdPlantel(Nullable<int> idPlantel)
+        {
+            var idPlantelParameter = idPlantel.HasValue ?
+                new ObjectParameter("IdPlantel", idPlantel) :
+                new ObjectParameter("IdPlantel", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GrupoGetByIdPlantel_Result>("GrupoGetByIdPlantel", idPlantelParameter);
+        }
+    
+        public virtual ObjectResult<SemestreGetAll_Result> SemestreGetAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SemestreGetAll_Result>("SemestreGetAll");
         }
     }
 }

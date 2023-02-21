@@ -369,7 +369,7 @@ namespace BL
                         alumno.ApellidoPaterno = query.ApellidoPaterno;
                         alumno.ApellidoMaterno = query.ApellidoMaterno;
 
-                        alumno.FechaNacimiento = query.FechaNacimiento.Value.ToString("dd/MM/yyyy");
+                       
 
 
                         alumno.Semestre = new ML.Semestre();

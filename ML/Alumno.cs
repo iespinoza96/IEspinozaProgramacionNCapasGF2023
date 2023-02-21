@@ -13,6 +13,7 @@ namespace ML
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string FechaNacimiento { get; set; }
+        public ML.Horarios Horario { get; set; }
         public ML.Semestre Semestre { get; set; }
         public string NombreCompleto { get; set; }
         public List<object> Alumnos { get; set; }

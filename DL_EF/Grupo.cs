@@ -10,13 +10,14 @@
 namespace DL_EF
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class AlumnoGetById_Result
+    public partial class Grupo
     {
-        public int IdAlumno { get; set; }
+        public int IdGrupo { get; set; }
         public string Nombre { get; set; }
-        public string ApellidoPaterno { get; set; }
-        public string ApellidoMaterno { get; set; }
-        public Nullable<byte> IdSemestre { get; set; }
+        public Nullable<int> IdPlantel { get; set; }
+    
+        public virtual Plantel Plantel { get; set; }
     }
 }

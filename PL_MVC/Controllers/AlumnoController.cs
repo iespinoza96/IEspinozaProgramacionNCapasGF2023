@@ -30,12 +30,18 @@ namespace PL_MVC.Controllers
         public ActionResult Form(int? idAlumno) //2
         {
             ML.Result resultSemestre = BL.Semestre.GetAll();
+            ML.Result resultPlantel = BL.Plantel.GetAll();
 
             ML.Alumno alumno = new ML.Alumno();
             alumno.Semestre = new ML.Semestre();
+            alumno.Horario = new ML.Horarios();
+            alumno.Horario.Grupo = new ML.Grupo();
+            alumno.Horario.Grupo.Plantel = new ML.Plantel();
 
-            if (resultSemestre.Correct)
+
+            if (resultSemestre.Correct && resultPlantel.Correct)
             {
+                alumno.Horario.Grupo.Plantel.Planteles = resultPlantel.Objects;
                 alumno.Semestre.Semestres = resultSemestre.Objects;
             }
             if (idAlumno == null)
