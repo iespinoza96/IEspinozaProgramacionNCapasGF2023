@@ -16,13 +16,14 @@ namespace BL
             {
                 using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
                 {
-                    var query = context.GrupoGetByIdPlantel(idPlantel).FirstOrDefault();
+                    var query = context.GrupoGetByIdPlantel(idPlantel).ToList();
 
                     if (query != null)
                     {
                         result.Objects = new List<object>();
 
-                        var obj = query; 
+                        foreach (var obj in query)
+                        {
                             ML.Grupo grupo = new ML.Grupo();
 
                             grupo.IdGrupo = obj.IdGrupo;
@@ -30,7 +31,7 @@ namespace BL
 
 
                             result.Objects.Add(grupo);
-
+                        }
                     }
                 }
                 result.Correct = true;
