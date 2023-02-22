@@ -127,7 +127,7 @@ namespace PL_MVC.Controllers
             ML.Result result = new ML.Result();
             result = BL.Grupo.GetByIdPlantel(idPlantel);
 
-            return Json(result);
+            return Json(result.Objects);
         }
     }
 }

@@ -58,7 +58,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Grupo__IdPlantel__5EBF139D">
+        <Association Name="FK__Grupo__IdPlantel__6D0D32F4">
           <End Role="Plantel" Type="Self.Plantel" Multiplicity="0..1" />
           <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -107,7 +107,7 @@
             <End Role="Semestre" EntitySet="Semestre" />
             <End Role="Alumno" EntitySet="Alumno" />
           </AssociationSet>
-          <AssociationSet Name="FK__Grupo__IdPlantel__5EBF139D" Association="Self.FK__Grupo__IdPlantel__5EBF139D">
+          <AssociationSet Name="FK__Grupo__IdPlantel__6D0D32F4" Association="Self.FK__Grupo__IdPlantel__6D0D32F4">
             <End Role="Plantel" EntitySet="Plantel" />
             <End Role="Grupo" EntitySet="Grupo" />
           </AssociationSet>
@@ -229,11 +229,11 @@
           </FunctionImport>
           <FunctionImport Name="AlumnoGetAll" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.AlumnoGetAll_Result)" />
           <FunctionImport Name="AlumnoGetById" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.AlumnoGetById_Result)">
-            <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
+          <Parameter Name="IdAlumno" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAllPlantel" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.GetAllPlantel_Result)" />
           <FunctionImport Name="GrupoGetByIdPlantel" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.GrupoGetByIdPlantel_Result)">
-            <Parameter Name="IdPlantel" Mode="In" Type="Int32" />
+          <Parameter Name="IdPlantel" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SemestreGetAll" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.SemestreGetAll_Result)" />
         </EntityContainer>

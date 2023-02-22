@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-md-3">
                             @Html.LabelFor(model => model.Horario.Grupo.Plantel)
-                            @Html.DropDownListFor(model => model.Horario.Grupo.Plantel.IdPlantel, new SelectList(Model.Horario.Grupo.Plantel.Planteles, "IdPlantel", "Nombre"), "Selecciona un plantel", new { @class = "form-control", @id="ddlPlantel" })
+                            @Html.DropDownListFor(model => model.Horario.Grupo.Plantel.IdPlantel, new SelectList(Model.Horario.Grupo.Plantel.Planteles, "IdPlantel", "Nombre"), "Selecciona un plantel", new { @class = "form-control", @id = "ddlPlantel" })
                         </div>
                         @if (Model.Horario.Grupo.Grupos != null)
                         {
@@ -86,12 +86,12 @@
                         {
                             <div class="col-md-3">
                                 @Html.LabelFor(model => model.Horario.Grupo)
-                                @Html.DropDownListFor(model => model.Horario.Grupo.IdGrupo, new SelectList(string.Empty, "Value", "Text"), "Selecciona un Grupo", new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.Horario.Grupo.IdGrupo, new SelectList(string.Empty, "Value", "Text"), "Selecciona un Grupo", new { @class = "form-control", @id = "ddlGrupo" })
                             </div>
                         }
                     </div>
 
-                    
+
 
                     <div class="form-group">
                         <div class="col-md-3">
@@ -111,8 +111,8 @@
         $("#ddlPlantel").change(function () {
             $("#ddlGrupo").empty();
             $.ajax({
-                type: 'POST', 
-                url: '@Url.Action("GrupoGetByIdPlantel")', 
+                type: 'POST',
+                url: '@Url.Action("GrupoGetByIdPlantel")',
                 dataType: 'json',
                 data: { idPlantel: $("#ddlPlantel").val() },
                 success: function (grupos) {
@@ -128,6 +128,7 @@
                 }
             });
         });
+     });
 
 
 
