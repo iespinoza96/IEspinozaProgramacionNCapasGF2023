@@ -34,6 +34,7 @@ namespace PL_MVC.Controllers
 
             ML.Alumno alumno = new ML.Alumno();
             alumno.Semestre = new ML.Semestre();
+
             alumno.Horario = new ML.Horarios();
             alumno.Horario.Grupo = new ML.Grupo();
             alumno.Horario.Grupo.Plantel = new ML.Plantel();
@@ -120,7 +121,13 @@ namespace PL_MVC.Controllers
             //ML.Result result = BL.Alumno.Delete(idAlumno);
             return View();
         }
+        [HttpPost]
+        public JsonResult GrupoGetByIdPlantel(int idPlantel)
+        {
+            ML.Result result = new ML.Result();
+            result = BL.Grupo.GetByIdPlantel(idPlantel);
 
-
+            return Json(result);
+        }
     }
 }
