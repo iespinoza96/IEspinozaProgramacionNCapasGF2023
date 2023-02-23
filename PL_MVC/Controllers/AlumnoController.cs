@@ -77,6 +77,16 @@ namespace PL_MVC.Controllers
         [HttpPost]
         public ActionResult Form(ML.Alumno alumno)
         {
+            HttpPostedFileBase file = Request.Files["fuImage"];
+
+            if (file != null)
+            {
+               byte[] imagen = ConvertToBytes(file);
+               
+                alumno.Imagen = Convert.ToBase64String(imagen);
+            }
+
+
             ML.Result result = new ML.Result();
 
             if (alumno.IdAlumno == 0)
@@ -128,6 +138,15 @@ namespace PL_MVC.Controllers
             result = BL.Grupo.GetByIdPlantel(idPlantel);
 
             return Json(result.Objects);
+        }
+
+        public byte[] ConvertToBytes(HttpPostedFileBase Foto)
+        {
+            byte[] data = null;
+            System.IO.BinaryReader reader = new System.IO.BinaryReader(Foto.InputStream);
+            data = reader.ReadBytes((int)Foto.ContentLength);
+
+            return data;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace DL_EF
         public virtual DbSet<Plantel> Plantels { get; set; }
         public virtual DbSet<Semestre> Semestres { get; set; }
     
-        public virtual int AlumnoAdd(string nombre, string apellidoPaterno, string apellidoMaterno, Nullable<byte> idSemestre)
+        public virtual int AlumnoAdd(string nombre, string apellidoPaterno, string apellidoMaterno, Nullable<byte> idSemestre, string imagen)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -51,7 +51,11 @@ namespace DL_EF
                 new ObjectParameter("IdSemestre", idSemestre) :
                 new ObjectParameter("IdSemestre", typeof(byte));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AlumnoAdd", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, idSemestreParameter);
+            var imagenParameter = imagen != null ?
+                new ObjectParameter("Imagen", imagen) :
+                new ObjectParameter("Imagen", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AlumnoAdd", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, idSemestreParameter, imagenParameter);
         }
     
         public virtual ObjectResult<AlumnoGetAll_Result> AlumnoGetAll()

@@ -119,6 +119,7 @@ namespace BL
                                 alumno.Nombre = (string)row[1];
                                 alumno.ApellidoPaterno = row[2].ToString();
                                 alumno.ApellidoMaterno = row[3].ToString();
+                                alumno.Imagen = row[4].ToString();
 
                                 result.Objects.Add(alumno); //boxing
 
@@ -275,7 +276,7 @@ namespace BL
             {
                 using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
                 {
-                    int query = context.AlumnoAdd(alumno.Nombre, alumno.ApellidoPaterno, alumno.ApellidoMaterno, alumno.Semestre.IdSemestre);
+                    int query = context.AlumnoAdd(alumno.Nombre, alumno.ApellidoPaterno, alumno.ApellidoMaterno, alumno.Semestre.IdSemestre,alumno.Imagen);
 
                     if (query >= 1)
                     {

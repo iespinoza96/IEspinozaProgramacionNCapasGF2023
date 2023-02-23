@@ -15,6 +15,7 @@
           <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
           <Property Name="IdSemestre" Type="tinyint" />
           <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Imagen" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Grupo">
           <Key>
@@ -87,6 +88,7 @@
           <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
           <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
           <Parameter Name="IdSemestre" Type="tinyint" Mode="In" />
+          <Parameter Name="Imagen" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="AlumnoGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="AlumnoGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -132,6 +134,7 @@
           <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Semestre" Relationship="Self.FK__Alumno__IdSemest__36B12243" FromRole="Alumno" ToRole="Semestre" />
           <NavigationProperty Name="Horarios" Relationship="Self.FK__Horario__IdAlumn__6477ECF3" FromRole="Alumno" ToRole="Horario" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Grupo">
           <Key>
@@ -226,6 +229,7 @@
             <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
             <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
             <Parameter Name="IdSemestre" Mode="In" Type="Byte" />
+            <Parameter Name="Imagen" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AlumnoGetAll" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.AlumnoGetAll_Result)" />
           <FunctionImport Name="AlumnoGetById" ReturnType="Collection(IEspinozaProgramacionNCapasGF2023Model.AlumnoGetById_Result)">
@@ -275,6 +279,7 @@
           <EntitySetMapping Name="Alumnoes">
             <EntityTypeMapping TypeName="IEspinozaProgramacionNCapasGF2023Model.Alumno">
               <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="IdAlumno" ColumnName="IdAlumno" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />

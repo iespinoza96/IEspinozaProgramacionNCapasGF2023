@@ -26,6 +26,7 @@ namespace DL_EF
         public string ApellidoMaterno { get; set; }
         public Nullable<byte> IdSemestre { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
+        public string Imagen { get; set; }
     
         public virtual Semestre Semestre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
