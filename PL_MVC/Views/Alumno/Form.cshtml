@@ -99,7 +99,7 @@
                     @if (Model.Imagen != null)
                     {
 
-                        <img id="Img" src="data:image/*;base64,@Model.Imagen" style="width:250px ; height:250px" />
+                        <img id="Img" src="data:image/*;base64,@Convert.FromBase64String(Model.Imagen)" style="width:250px ; height:250px" />
 
                     }
                     else

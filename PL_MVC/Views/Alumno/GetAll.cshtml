@@ -29,6 +29,7 @@
                             <td class="text-center" style=" font-weight:bold;">Apellido Materno</td>*@
                         <td class="text-center" style=" font-weight:bold;">Fecha Nacimiento</td>
                         <td class="text-center" style=" font-weight:bold;">Semestre</td>
+                        <td class="text-center" style=" font-weight:bold;">Imagen</td>
 
                         <td class="text-center" style=" font-weight:bold;">Eliminar</td>
                     </tr>
@@ -47,6 +48,18 @@
                             <td>@alumno.FechaNacimiento</td>
                             <td class="hidden">@alumno.Semestre.IdSemestre</td>
                             <td>@alumno.Semestre.Nombre</td>
+                            <td>
+                                @if (alumno.Imagen != null)
+                                {
+
+                                    <img id="Img" src="data:image/*;base64,@alumno.Imagen" style="width:250px ; height:250px" />
+
+                                }
+                                else
+                                {
+                                    <img id="Img" src="~/Imagenes/SinImagen.png" style="width:250px ; height:250px" />
+                                }
+                            </td>
 
 
                             <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-erase" href="@Url.Action("Delete", "Alumno", new { IdAlumno = alumno.IdAlumno })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>

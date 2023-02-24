@@ -276,7 +276,7 @@ namespace BL
             {
                 using (DL_EF.IEspinozaProgramacionNCapasGF2023Entities context = new DL_EF.IEspinozaProgramacionNCapasGF2023Entities())
                 {
-                    int query = context.AlumnoAdd(alumno.Nombre, alumno.ApellidoPaterno, alumno.ApellidoMaterno, alumno.Semestre.IdSemestre,alumno.Imagen);
+                    int query = context.AlumnoAdd(alumno.Nombre, alumno.ApellidoPaterno, alumno.ApellidoMaterno, alumno.Semestre.IdSemestre,alumno.FechaNacimiento,alumno.Imagen);
 
                     if (query >= 1)
                     {
@@ -323,6 +323,8 @@ namespace BL
                             alumno.ApellidoPaterno = obj.ApellidoPaterno;
                             alumno.ApellidoMaterno = obj.ApellidoMaterno;
                             alumno.FechaNacimiento = obj.FechaNacimiento.Value.ToString("dd/MM/yyyy");
+                            alumno.Imagen = obj.Imagen;
+                           
 
 
                             alumno.Semestre = new ML.Semestre();
@@ -369,8 +371,8 @@ namespace BL
                         alumno.Nombre = query.Nombre;
                         alumno.ApellidoPaterno = query.ApellidoPaterno;
                         alumno.ApellidoMaterno = query.ApellidoMaterno;
+                        alumno.Imagen = query.Imagen;
 
-                       
 
 
                         alumno.Semestre = new ML.Semestre();
