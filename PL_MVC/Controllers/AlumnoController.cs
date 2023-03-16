@@ -59,6 +59,7 @@ namespace PL_MVC.Controllers
                 {
                     alumno = (ML.Alumno)result.Object;//unboxing
                     alumno.Semestre.Semestres = resultSemestre.Objects;
+                    alumno.Horario.Grupo.Plantel.Planteles = resultPlantel.Objects;
                     //update
                     return View(alumno);
                 }
@@ -103,7 +104,7 @@ namespace PL_MVC.Controllers
                     ViewBag.Message = "Ocurrio un error al insertar el registro";
                 }
                 
-                return View("Modal");
+                return View();
             }
             else
             {
