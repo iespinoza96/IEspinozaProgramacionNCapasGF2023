@@ -10,10 +10,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL", "DL\DL.csproj", "{881AC745-EE37-47E3-898D-D29C3DD093F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{6FC121E8-FB40-4F2A-B6FF-960018B13FCB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{621DC112-D095-4DB8-86D0-9D285BB637FD} = {621DC112-D095-4DB8-86D0-9D285BB637FD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL_EF", "DL_EF\DL_EF.csproj", "{618ACFC3-66F7-450A-AF46-51F326DF6F39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL_MVC", "PL_MVC\PL_MVC.csproj", "{B6903A91-F9F9-4B30-9FF5-0869269D116D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL", "SL\SL.csproj", "{621DC112-D095-4DB8-86D0-9D285BB637FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +50,10 @@ Global
 		{B6903A91-F9F9-4B30-9FF5-0869269D116D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6903A91-F9F9-4B30-9FF5-0869269D116D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6903A91-F9F9-4B30-9FF5-0869269D116D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{621DC112-D095-4DB8-86D0-9D285BB637FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{621DC112-D095-4DB8-86D0-9D285BB637FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{621DC112-D095-4DB8-86D0-9D285BB637FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{621DC112-D095-4DB8-86D0-9D285BB637FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,6 +10,7 @@ namespace PL
     {
         public static void Add()
         {
+
             ML.Alumno alumno = new ML.Alumno();
 
             Console.WriteLine("Inserte el nombre del alumno: ");
